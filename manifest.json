@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "LinkedIn No Easy Apply",
+  "version": "1.0.0",
+  "description": "Hide LinkedIn job cards labeled Easy Apply.",
+  "permissions": ["storage"],
+  "host_permissions": ["https://www.linkedin.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://www.linkedin.com/jobs/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_title": "LinkedIn No Easy Apply",
+    "default_popup": "popup.html"
+  }
+}
