@@ -15,6 +15,7 @@ This is a client-side visual filter and does not modify your LinkedIn account or
 - Persists preference with `chrome.storage.sync`
 - Stores a reusable autofill profile in extension storage
 - One-click autofill for open Easy Apply forms
+- Reads autofill defaults from `base_profile.json` and `base_resume.json`
 
 ## Folder Contents
 
@@ -22,6 +23,9 @@ This is a client-side visual filter and does not modify your LinkedIn account or
 - `content.js`: DOM filtering logic for job cards
 - `popup.html`: popup UI for filtering and profile fields
 - `popup.js`: popup state management + autofill trigger
+- `seed/base_profile.json`: packaged source profile
+- `seed/base_resume.json`: packaged source resume
+- `sync_seed_from_project.sh`: copy latest JSON from `../../data/`
 
 ## Install (Developer Mode)
 
@@ -37,10 +41,19 @@ This is a client-side visual filter and does not modify your LinkedIn account or
 ## Autofill Usage
 
 1. Open the extension popup.
-2. Fill out your profile fields and click **Save Profile**.
+2. Profile fields are auto-loaded from:
+   - `seed/base_profile.json`
+   - `seed/base_resume.json`
 3. Open a LinkedIn job and click **Easy Apply** so the form is visible.
 4. Click **Autofill Current Page** in the popup.
 5. Review every answer before submitting.
+6. If you update the JSON files, click **Refresh from JSON** in popup.
+
+To sync the packaged seed files from project data, run:
+
+```bash
+./sync_seed_from_project.sh
+```
 
 ## Update After Local Changes
 
@@ -54,6 +67,8 @@ This is a client-side visual filter and does not modify your LinkedIn account or
 `content.js` scans likely LinkedIn job-card containers and checks card text/aria labels for blocked labels (`easy apply`, `promoted`). Matching cards get a hidden CSS class (`display: none !important`).
 
 For autofill, the script reads saved profile fields and fills common text inputs in Easy Apply modals (name, email, phone, location, links, years of experience) based on label matching.
+
+The popup syncs profile data from the two seed JSON files each time you open it and before each autofill run.
 
 ## Limitations
 
