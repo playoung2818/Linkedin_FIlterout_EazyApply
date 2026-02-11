@@ -2,8 +2,8 @@
   "manifest_version": 3,
   "name": "LinkedIn No Easy Apply",
   "version": "1.0.0",
-  "description": "Hide Easy Apply/Promoted jobs and autofill LinkedIn Easy Apply forms.",
-  "permissions": ["storage", "tabs"],
+  "description": "Hide LinkedIn job cards labeled Easy Apply.",
+  "permissions": ["storage"],
   "host_permissions": ["https://www.linkedin.com/*"],
   "content_scripts": [
     {
