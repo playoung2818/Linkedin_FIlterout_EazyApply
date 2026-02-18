@@ -23,18 +23,38 @@ function normalizeText(text) {
 }
 
 function isEasyApplyText(text) {
-  return normalizeText(text) === "easy apply";
+  const value = normalizeText(text);
+  return (
+    value.includes("easy apply") ||
+    value.includes("easy-apply") ||
+    value.includes("easyapply")
+  );
 }
 
 function isPromotedText(text) {
-  return normalizeText(text) === "promoted";
+  const value = normalizeText(text);
+  return value.includes("promoted");
+}
+
+function isRepostedText(text) {
+  const value = normalizeText(text);
+  return value.includes("reposted");
 }
 
 function isBlockedLabel(text) {
-  return isEasyApplyText(text) || isPromotedText(text);
+  return isEasyApplyText(text) || isPromotedText(text) || isRepostedText(text);
 }
 
 function cardHasEasyApply(card) {
+  const cardText = normalizeText(card.textContent || "");
+  if (
+    cardText.includes("easy apply") ||
+    cardText.includes("promoted") ||
+    cardText.includes("reposted")
+  ) {
+    return true;
+  }
+
   const labeled = card.querySelectorAll("button, span, strong, div, p");
   for (const node of labeled) {
     if (isBlockedLabel(node.textContent)) {
@@ -54,18 +74,28 @@ function cardHasEasyApply(card) {
 }
 
 function getJobCards() {
-  const selectors = [
-    "li.scaffold-layout__list-item",
-    "ul.jobs-search__results-list li",
-    "li.jobs-search-results__list-item",
-    "div.job-card-container",
-    "li.occludable-update"
-  ];
-
   const cards = new Set();
-  for (const selector of selectors) {
+
+  // Preferred: LinkedIn result list rows (evaluate once per row).
+  const rowSelectors = [
+    "li.jobs-search-results__list-item",
+    "li.scaffold-layout__list-item",
+    "ul.jobs-search__results-list > li"
+  ];
+  for (const selector of rowSelectors) {
     document.querySelectorAll(selector).forEach((el) => cards.add(el));
   }
+
+  // Fallback: standalone card containers not wrapped by list rows.
+  const standaloneSelectors = ["div.job-card-container", "li.occludable-update"];
+  for (const selector of standaloneSelectors) {
+    document.querySelectorAll(selector).forEach((el) => {
+      if (!el.closest("li.jobs-search-results__list-item, li.scaffold-layout__list-item")) {
+        cards.add(el);
+      }
+    });
+  }
+
   return [...cards];
 }
 
