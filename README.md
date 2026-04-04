@@ -4,6 +4,7 @@ A lightweight Chrome/Edge extension that hides LinkedIn Jobs cards labeled:
 
 - `Easy Apply`
 - `Promoted`
+- `Reposted`
 
 This is a client-side visual filter and does not modify your LinkedIn account or backend data.
 
@@ -13,6 +14,7 @@ This is a client-side visual filter and does not modify your LinkedIn account or
 - Handles dynamic loading/infinite scroll via `MutationObserver`
 - Popup toggle to enable/disable filtering
 - Persists preference with `chrome.storage.sync`
+- Optional resume-based autofill for application pages (popup button)
 
 ## Folder Contents
 
@@ -42,6 +44,27 @@ This is a client-side visual filter and does not modify your LinkedIn account or
 ## How It Works
 
 `content.js` scans likely LinkedIn job-card containers and checks card text/aria labels for blocked labels (`easy apply`, `promoted`). Matching cards get a hidden CSS class (`display: none !important`).
+
+The popup also supports importing a JSON profile and running autofill on the active tab.
+This uses `chrome.scripting.executeScript` only when you click **Autofill Current Page**.
+
+## Autofill Setup
+
+Default behavior:
+- The extension auto-loads bundled `resume.default.json` on first use.
+- No import is required for normal use.
+
+Optional override:
+1. Open the extension popup.
+2. Click **Import `base_resume.json`**.
+3. Select:
+   `/Users/a20748/Desktop/Job/Resume_CL_Generator/data/base_resume.json`
+4. Open a job application page and click **Autofill Current Page**.
+
+Notes:
+- Filter behavior is unchanged and independent from autofill.
+- Autofill writes only to currently empty fields when it can match common labels
+  (skills, summary, title, company, school, degree, location).
 
 ## Limitations
 

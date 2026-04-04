@@ -1,0 +1,100 @@
+{
+  "skills": [
+    "Python",
+    "SQL",
+    "R",
+    "Tableau",
+    "Power BI",
+    "Excel",
+    "Dune",
+    "Git",
+    "ETL pipelines",
+    "Data modeling",
+    "Automation",
+    "Financial analysis",
+    "Risk metrics",
+    "Forecasting",
+    "Data visualization",
+    "A/B testing",
+    "Cloud computing",
+    "Stata",
+    "ERP"
+  ],
+  "experience": [
+    {
+      "company": "Neousys Technology",
+      "title": "Business Systems / Operations Analyst",
+      "location": "Chicago, IL",
+      "start": "2024-05",
+      "end": "Present",
+      "bullets": [
+        "Designed Python-based MRP systems integrating inventory, work orders, and vendor lead times to improve production and purchasing decisions.",
+        "Built dashboards and automation tools that translate operational constraints into planning insights, reducing manual coordination.",
+        "Automated ETL workflows for receiving and work order processing to improve data accuracy and timeliness.",
+        "Built Flask/SQL tools for serial number validation, achieving 100% picking and kitting accuracy.",
+        "Partnered with planning, purchasing, logistics, and finance to standardize reporting inputs and decision support."
+      ]
+    },
+    {
+      "company": "Bizarro Capital LLC",
+      "title": "Data Analyst Intern",
+      "location": "St. Louis, MO",
+      "start": "2023-06",
+      "end": "2023-08",
+      "bullets": [
+        "Built 20+ SQL-driven dashboards for positions, P&L, and liquidity exposure, improving pitch efficiency by 50%.",
+        "Built Python pipelines to scrape, clean, and analyze 100+ DeFi liquidity pools and produce volatility metrics.",
+        "Conducted regression analysis linking U.S. Treasury yields with Ethereum returns for macro-driven research."
+      ]
+    },
+    {
+      "company": "Guotai Junan Securities",
+      "title": "Investment Banking Intern",
+      "location": "Shanghai, China",
+      "start": "2021-06",
+      "end": "2021-08",
+      "bullets": [
+        "Performed financial statement analysis and industry research for equity and debt financing projects.",
+        "Built Excel-based valuation and scenario models to support client decision materials."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Crypto and Traditional Market Interactions",
+      "summary": "Trading strategy research on cross-asset relationships and predictive signals.",
+      "bullets": [
+        "Analyzed relationships between crypto, equities, and fixed income using regression and DCC models.",
+        "Built LSTM-based crypto price prediction models to evaluate machine-learning signals."
+      ]
+    },
+    {
+      "name": "ERP Automation and Reporting System",
+      "summary": "Process automation and data standardization for reporting.",
+      "bullets": [
+        "Automated PDF-to-Excel workflows and standardized inputs into SQL to improve reporting accuracy and speed."
+      ]
+    },
+    {
+      "name": "Venture Capital Practicum",
+      "summary": "Team lead for corporate venture decision support.",
+      "bullets": [
+        "Designed analytical scorecards to evaluate build vs buy vs partner decisions for large enterprises."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "Washington University in St. Louis, Olin Business School",
+      "degree": "M.S. in Business Analytics (FinTech)",
+      "location": "St. Louis, MO",
+      "year": "2023"
+    },
+    {
+      "school": "Shanghai Lixin University of Accounting and Finance",
+      "degree": "B.S. in Economics",
+      "location": "Shanghai, China",
+      "year": "2022"
+    }
+  ]
+}
